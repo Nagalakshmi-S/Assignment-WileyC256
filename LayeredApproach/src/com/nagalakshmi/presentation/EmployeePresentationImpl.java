@@ -41,7 +41,7 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 	@Override
 	public void performMenu(int choice) {
 		
-		try(Scanner scanner=new Scanner(System.in);) {
+		Scanner scanner=new Scanner(System.in); 
 		switch (choice) {
 		case 1:
 			Set<Employee> employees=employeeService.getAllEmployees();
@@ -183,9 +183,6 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 			System.out.println("Invalid Coice");
 			break;
 		}
-		}
-		catch(Exception exception) {
-			
-		}
+		
 	}
 }
