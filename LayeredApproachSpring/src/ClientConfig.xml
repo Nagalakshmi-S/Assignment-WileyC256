@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="EmpDao" class="com.nagalakshmi.persistence.EmployeeDaoImpl"></bean>
+	<bean id="EmpInProjDao" class="com.nagalakshmi.persistence.EmployeeInProjectDaoImpl"></bean>	
+	<bean id="ProjectAllocDao" class="com.nagalakshmi.persistence.ProjectAllocationDaoImpl"></bean>
+	<bean id="ProjectDao" class="com.nagalakshmi.persistence.ProjectDaoImpl"></bean>
+	
+	<bean id="EmpService" class="com.nagalakshmi.service.EmployeeServiceImpl">
+	<property name="employeeDao" ref="EmpDao"></property>
+	</bean>
+	
+	<bean id="ProjectService" class="com.nagalakshmi.service.ProjectAllocationServiceImpl">
+	<property name="projAllocDao" ref="ProjectAllocDao"></property>
+	<property name="projectDao" ref="ProjectDao"></property>
+	<property name="empInProj" ref="EmpInProjDao"></property>
+	</bean>
+	
+	
+	<bean id="EmpPresentation" class="com.nagalakshmi.presentation.EmployeePresentationImpl">
+	<constructor-arg name="employeeService" ref="EmpService"></constructor-arg>
+	<constructor-arg name="projectAllocService" ref="ProjectService"></constructor-arg>
+	</bean>
+	
+	
+	
+</beans>
